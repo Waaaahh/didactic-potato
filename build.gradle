@@ -36,6 +36,9 @@ dependencies {
 
 	// gson library
 	implementation 'com.google.code.gson:gson:2.8.5'
+
+	// jwt token
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 }
 
 tasks.named('test') {
