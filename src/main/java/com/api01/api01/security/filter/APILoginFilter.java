@@ -9,9 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+
+import com.google.gson.Gson;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -36,7 +39,10 @@ public class APILoginFilter extends AbstractAuthenticationProcessingFilter {
         Map<String, String> jsonData = parseRequestJSON(request);
 
         log.info(jsonData);
-        return null;
+
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                jsonData.get("mid"), jsonData.get("mpw"));
+        return getAuthenticationManager().authenticate(authenticationToken);
     }
 
     private Map<String, String> parseRequestJSON(HttpServletRequest request) {

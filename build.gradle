@@ -35,7 +35,7 @@ dependencies {
 	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 
 	// gson library
-	implemetation 'com.google.code.gson:gson:2.8.9'
+	implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 tasks.named('test') {
